@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        GIT_TOOL = 'git' // Specify the Git tool to use (optional if not using a specific tool)
+        CREDENTIALS_ID = 'bd6daf8e-f0f8-4b79-b360-be74e243ad07' // Specify your credentials ID
+        REPO_URL = 'https://github.com/YASH-PATEL1221/jenkins_nodejs.git' // Replace with your repository URL
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from GitHub using specified credentials
+                script {
+                    def gitCredentials = credentials("${CREDENTIALS_ID}")
+                    git tool: "${GIT_TOOL}", url: "${REPO_URL}", credentialsId: gitCredentials.id
+                }
+            }
+        }
+        // Add more stages for building, testing, etc.
+    }
+}
