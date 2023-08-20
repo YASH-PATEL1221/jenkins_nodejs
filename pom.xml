@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>node-app</artifactId>
+    <artifactId>node-app-war</artifactId>
     <version>1.0.0</version>
+    <packaging>war</packaging> <!-- Specify packaging as WAR -->
 
     <properties>
         <!-- Define Node.js and npm versions -->
@@ -39,15 +40,6 @@
                         </goals>
                         <configuration>
                             <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm build</id>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run dev</arguments>
                         </configuration>
                     </execution>
                 </executions>
