@@ -1,12 +1,57 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"   
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0   
-http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  
-  <modelVersion>4.0.0</modelVersion>  
-  <groupId>com.javatpoint.application1</groupId>  
-  <artifactId>my-app</artifactId>
-  <packaging>war</packaging>
-  <version>1</version>  
-  
-</project>  
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.example</groupId>
+    <artifactId>node-app</artifactId>
+    <version>1.0.0</version>
+
+    <properties>
+        <!-- Define Node.js and npm versions -->
+        <node.version>v14.17.5</node.version>
+        <npm.version>6.14.14</npm.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <!-- Plugin for Node.js/npm execution -->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.12.0</version>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <configuration>
+                            <nodeVersion>${node.version}</nodeVersion>
+                            <npmVersion>${npm.version}</npmVersion>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm install</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>install</arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>npm build</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run build</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
